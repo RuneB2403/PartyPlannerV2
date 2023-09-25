@@ -1,0 +1,68 @@
+﻿@model PartyPlannerV2.Models.Event
+
+@{
+    ViewData["Title"] = "Edit Event";
+}
+
+<div class="container mt-5">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit Event</h4>
+            <hr />
+
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="EventId" />
+
+                <div class="form-group">
+                    <label for="Name">Name:</label>
+                    <input type="text" id="Name" name="Name" asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="InfoText">InfoText:</label>
+                    <input type="text" id="InfoText" name="InfoText" asp-for="InfoText" class="form-control" />
+                    <span asp-validation-for="InfoText" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Category">Category:</label>
+                    <input type="text" id="Category" name="Category" asp-for="Category" class="form-control" />
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Location">Location:</label>
+                    <input type="text" id="Location" name="Location" asp-for="Location" class="form-control" />
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="DateTime">Date and Time:</label>
+                    <input type="datetime-local" id="DateTime" name="DateTime" asp-for="DateTime" class="form-control" />
+                    <span asp-validation-for="DateTime" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Costs">Costs:</label>
+                    <input type="text" id="Costs" name="Costs" asp-for="Costs" class="form-control" />
+                    <span asp-validation-for="Costs" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Maxparticipants">Max Participants:</label>
+                    <input type="number" id="Maxparticipants" name="Maxparticipants" asp-for="Maxparticipants" class="form-control" />
+                    <span asp-validation-for="Maxparticipants" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

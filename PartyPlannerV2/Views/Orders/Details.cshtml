@@ -1,0 +1,33 @@
+﻿@model PartyPlannerV2.Models.Order
+
+@{
+    ViewData["Title"] = "Order Details";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Gebruik hier je eigen lay-outbestand
+}
+
+<div class="container mt-5">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Order Details</h4>
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-2">Date and Time:</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.DateTime)</dd>
+
+                <dt class="col-sm-2">Event ID:</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.EventId)</dd>
+
+                <dt class="col-sm-2">Payed:</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Payed)</dd>
+            </dl>
+
+            <div class="mb-3">
+                <a asp-action="Edit" asp-route-id="@Model?.OrderId" class="btn btn-primary">Edit</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

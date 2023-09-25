@@ -1,0 +1,32 @@
+﻿@model PartyPlannerV2.Models.Participant
+
+@{
+    ViewData["Title"] = "Edit Participant";
+}
+
+<div class="container mt-5">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit Participant</h4>
+            <hr />
+
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ParticipantId" />
+
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name:</label>
+                    <input type="text" id="Name" name="Name" asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

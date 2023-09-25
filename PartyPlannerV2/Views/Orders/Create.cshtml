@@ -1,0 +1,49 @@
+﻿@model PartyPlannerV2.Models.Order
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="display-4">Create Order</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">New Order</h4>
+        <hr />
+
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="DateTime" class="control-label">Date and Time</label>
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EventId" class="control-label">Event ID</label>
+                <input asp-for="EventId" class="form-control" />
+                <span asp-validation-for="EventId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <input class="form-check-input" type="checkbox" asp-for="Payed" id="Payed" />
+                <label class="form-check-label" for="Payed">Paid</label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

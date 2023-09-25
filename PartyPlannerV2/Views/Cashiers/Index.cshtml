@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PartyPlannerV2.Models.Cashier>
+
+@{
+    ViewData["Title"] = "Cashier List";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Gebruik hier je eigen lay-outbestand
+}
+
+<div class="container mt-5">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="text-right mb-3">
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Actions">
+                            <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.CashierId">Edit</a>
+                            <a class="btn btn-outline-info btn-sm" asp-action="Details" asp-route-id="@item.CashierId">Details</a>
+                            <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.CashierId">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

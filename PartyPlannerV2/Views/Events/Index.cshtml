@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PartyPlannerV2.Models.Event>
+
+@{
+    ViewData["Title"] = "Event List";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Gebruik hier je eigen lay-outbestand
+}
+
+<div class="container mt-5">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="text-right mb-3">
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Info Text</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Date Time</th>
+                <th>Costs</th>
+                <th>Max Participants</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.InfoText)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Location)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DateTime)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Costs)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Maxparticipants)</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Actions">
+                            <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.EventId">Edit</a>
+                            <a class="btn btn-outline-info btn-sm" asp-action="Details" asp-route-id="@item.EventId">Details</a>
+                            <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.EventId">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

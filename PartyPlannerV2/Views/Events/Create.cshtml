@@ -1,0 +1,87 @@
+﻿@model PartyPlannerV2.Models.Event
+
+@{
+    ViewData["Title"] = "Create Event";
+}
+
+<div class="container mt-5">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create" class="needs-validation" novalidate>
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control" id="Name" required />
+                    <div class="invalid-feedback">
+                        Please provide a valid name.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="InfoText" class="form-label">InfoText</label>
+                    <input asp-for="InfoText" class="form-control" id="InfoText" required />
+                    <div class="invalid-feedback">
+                        Please provide valid information.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Category" class="form-label">Category</label>
+                    <input asp-for="Category" class="form-control" id="Category" required />
+                    <div class="invalid-feedback">
+                        Please select a category.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Location" class="form-label">Location</label>
+                    <input asp-for="Location" class="form-control" id="Location" required />
+                    <div class="invalid-feedback">
+                        Please provide a valid location.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="DateTime" class="form-label">Date and Time</label>
+                    <input asp-for="DateTime" class="form-control" id="DateTime" required />
+                    <div class="invalid-feedback">
+                        Please provide a valid date and time.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Costs" class="form-label">Costs</label>
+                    <input asp-for="Costs" class="form-control" id="Costs" required />
+                    <div class="invalid-feedback">
+                        Please provide valid costs.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Maxparticipants" class="form-label">Max Participants</label>
+                    <input asp-for="Maxparticipants" class="form-control" id="Maxparticipants" required />
+                    <div class="invalid-feedback">
+                        Please specify the maximum number of participants.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

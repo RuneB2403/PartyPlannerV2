@@ -1,0 +1,37 @@
+﻿@model PartyPlannerV2.Models.Cashier
+
+@{
+    ViewData["Title"] = "Create Cashier";
+}
+
+<div class="container mt-5">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create" class="needs-validation" novalidate>
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control" id="Name" required />
+                    <div class="invalid-feedback">
+                        Please provide a valid name.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

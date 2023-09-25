@@ -1,0 +1,46 @@
+﻿@model PartyPlannerV2.Models.Order
+
+@{
+    ViewData["Title"] = "Edit Order";
+}
+
+<div class="container mt-5">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit Order</h4>
+            <hr />
+
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="OrderId" />
+
+                <div class="form-group">
+                    <label for="DateTime">Date and Time:</label>
+                    <input type="datetime-local" id="DateTime" name="DateTime" asp-for="DateTime" class="form-control" />
+                    <span asp-validation-for="DateTime" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="EventId">Event ID:</label>
+                    <input type="text" id="EventId" name="EventId" asp-for="EventId" class="form-control" />
+                    <span asp-validation-for="EventId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="hidden" asp-for="Payed" /> <!-- Verberg dit veld om problemen met de checkbox te voorkomen -->
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Payed" name="Payed" asp-for="Payed" />
+                        <label class="custom-control-label" for="Payed">Payed</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
