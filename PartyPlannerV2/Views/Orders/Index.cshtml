@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Order List";
-    Layout = "~/Views/Shared/_Layout.cshtml"; // Gebruik hier je eigen lay-outbestand
 }
 
 <div class="container mt-5">
@@ -15,6 +14,7 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
+                <th>Order ID</th>
                 <th>Date Time</th>
                 <th>Event ID</th>
                 <th>Paid</th>
@@ -25,6 +25,7 @@
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>@Html.DisplayFor(modelItem => item.OrderId)</td>
                     <td>@Html.DisplayFor(modelItem => item.DateTime)</td>
                     <td>@Html.DisplayFor(modelItem => item.EventId)</td>
                     <td>@Html.DisplayFor(modelItem => item.Payed)</td>

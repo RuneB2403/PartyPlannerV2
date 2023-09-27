@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registratieformulier</title>
+</head>
+<body>
+    <center>
+        <h1>Registratie</h1>
+        <form action="/Registration/Register" method="POST">
+            <label for="rol">Selecteer uw rol:</label>
+            <select id="rol" name="rol">
+                <option value="organizer">Organizer</option>
+                <option value="participant">Participant</option>
+            </select>
+            <br>
+            <label for="gebruikersnaam">Gebruikersnaam:</label>
+            <input type="text" id="gebruikersnaam" name="gebruikersnaam" required>
+            <br>
+            <input type="submit" value="Registreren">
+        </form>
+    </center>
+</body>
+</html>

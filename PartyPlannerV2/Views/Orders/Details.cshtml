@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Order Details";
-    Layout = "~/Views/Shared/_Layout.cshtml"; // Gebruik hier je eigen lay-outbestand
 }
 
 <div class="container mt-5">
@@ -14,6 +13,9 @@
             <hr />
 
             <dl class="row">
+                <dt class="col-sm-2">Order ID:</dt>
+                <dd class="col-sm-1">@Html.DisplayFor(model => model.OrderId)</dd>
+
                 <dt class="col-sm-2">Date and Time:</dt>
                 <dd class="col-sm-10">@Html.DisplayFor(model => model.DateTime)</dd>
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,8 @@ namespace PartyPlannerV2.Controllers
             _context = context;
         }
 
+
+        // dan ziet de participant het niet, kan niet accessen[Authorize(Policy = "OrganizerPolicy")]
         // GET: Events
         public async Task<IActionResult> Index()
         {

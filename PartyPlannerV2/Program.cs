@@ -1,10 +1,22 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using PartyPlannerV2.Data;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<PartyPlannerDbV2>();
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<PartyPlannerDbV2>()
+    .AddDefaultTokenProviders();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("OrganizerPolicy", policy =>
+    policy.RequireRole("Organizer"));
+});
 
 var app = builder.Build();
 
