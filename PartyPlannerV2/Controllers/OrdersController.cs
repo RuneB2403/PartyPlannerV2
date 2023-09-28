@@ -60,9 +60,22 @@ namespace PartyPlannerV2.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var eventToUpdate = await _context.Events.FindAsync(order.EventId);
+
+                if (eventToUpdate != null)
+                {
+                    // Roep de ReduceAvailableSpots-methode aan op het bijbehorende evenement
+                    eventToUpdate.ReduceAvailableSpots();
+
+                    _context.Add(order);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    // Geef een foutmelding weer als het evenement niet is gevonden.
+                    ModelState.AddModelError(string.Empty, "Evenement niet gevonden.");
+                }
             }
             return View(order);
         }

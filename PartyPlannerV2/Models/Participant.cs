@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace PartyPlannerV2.Models
 {
-    public class Participant
+    public class Participant : IdentityUser
     {
         [Key]
         public int ParticipantId { get; set; }

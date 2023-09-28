@@ -20,7 +20,20 @@ namespace PartyPlannerV2.Models
         public float Costs { get; set; }
         [Required]
         public int Maxparticipants { get; set; }
+        [Required]
+        public int CurrentParticipants { get; set; }
         public List<Participant> Participants { get; set; } = new List<Participant>();
         public List<Cashier> Cashiers { get; set; } = new List<Cashier>();
+        public void ReduceAvailableSpots()
+        {
+            if (CurrentParticipants < Maxparticipants)
+            {
+                Maxparticipants--;
+            }
+            else
+            {
+                throw new InvalidOperationException("Er zijn geen beschikbare plaatsen meer voor dit evenement.");
+            }
+        }
     }
 }

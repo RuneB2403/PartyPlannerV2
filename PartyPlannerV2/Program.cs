@@ -9,13 +9,26 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<PartyPlannerDbV2>();
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    //.AddEntityFrameworkStores<PartyPlannerDbV2>()
+    //.AddDefaultTokenProviders();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<PartyPlannerDbV2>()
     .AddDefaultTokenProviders();
+
+
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("OrganizerPolicy", policy =>
-    policy.RequireRole("Organizer"));
+    {
+        policy.RequireRole("Organizer");
+    });
+
+    options.AddPolicy("ParticipantPolicy", policy =>
+    {
+        policy.RequireRole("Participant");
+    });
 });
 
 var app = builder.Build();
